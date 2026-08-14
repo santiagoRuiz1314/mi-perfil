@@ -3,10 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Perfil personal de Santiago Ruiz, desarrollador web full-stack y estudiante de Ingeniería de Sistemas en la UNAB.">
+    <meta name="author" content="Santiago Ruiz">
+    <meta name="theme-color" content="#12263f">
     <title>@yield('titulo', 'Mi Perfil') | Santiago Ruiz</title>
     <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
 </head>
 <body>
+
+    <a href="#contenido" class="salto-contenido">Saltar al contenido</a>
 
     <header class="cabecera">
         <div class="contenedor cabecera__interior">
@@ -34,7 +39,7 @@
         </div>
     </header>
 
-    <main class="contenedor principal">
+    <main id="contenido" class="contenedor principal">
         @yield('contenido')
     </main>
 

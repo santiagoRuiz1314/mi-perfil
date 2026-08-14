@@ -627,3 +627,209 @@ ol {
     color: #8fa5bd;
     font-size: 0.82rem;
 }
+
+/* --------------------------------------------------------------------------
+   18. Transiciones y detalles de interacción
+   -------------------------------------------------------------------------- */
+
+html {
+    scroll-behavior: smooth;
+}
+
+::selection {
+    background-color: var(--acento);
+    color: #ffffff;
+}
+
+a,
+.boton,
+.tarjeta,
+.menu__enlace,
+.etiqueta {
+    transition: background-color 0.2s ease,
+                color 0.2s ease,
+                border-color 0.2s ease,
+                box-shadow 0.2s ease,
+                transform 0.2s ease;
+}
+
+.tarjeta:hover {
+    transform: translateY(-3px);
+}
+
+.tarjeta--estatica:hover {
+    transform: none;
+}
+
+.boton--principal:hover {
+    box-shadow: var(--sombra-fuerte);
+}
+
+.etiqueta:hover {
+    background-color: var(--azul-medio);
+    color: #ffffff;
+}
+
+/* Enlace para saltar directamente al contenido (accesibilidad por teclado) */
+.salto-contenido {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 100;
+    background-color: var(--acento);
+    color: #ffffff;
+    padding: var(--esp-xs) var(--esp-sm);
+    border-radius: 0 0 var(--radio) 0;
+    font-weight: 600;
+}
+
+.salto-contenido:focus {
+    left: 0;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+/* --------------------------------------------------------------------------
+   19. Accesibilidad: foco visible al navegar con teclado
+   -------------------------------------------------------------------------- */
+
+a:focus-visible,
+.boton:focus-visible,
+.menu__enlace:focus-visible {
+    outline: 3px solid var(--acento);
+    outline-offset: 3px;
+    border-radius: var(--radio);
+}
+
+.cabecera a:focus-visible {
+    outline-color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   20. Diseño responsive
+   -------------------------------------------------------------------------- */
+
+/* Tabletas */
+@media (max-width: 768px) {
+    .cabecera__interior {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .menu {
+        justify-content: center;
+    }
+
+    .portada {
+        padding: var(--esp-md);
+    }
+
+    .portada__titulo {
+        font-size: 2.1rem;
+    }
+
+    .encabezado__titulo {
+        font-size: 1.8rem;
+    }
+
+    .ficha__clave {
+        flex: 0 0 100%;
+    }
+
+    .ficha__valor {
+        min-width: 0;
+    }
+}
+
+/* Teléfonos */
+@media (max-width: 480px) {
+    body {
+        font-size: 15px;
+    }
+
+    .contenedor {
+        padding-left: var(--esp-sm);
+        padding-right: var(--esp-sm);
+    }
+
+    .principal {
+        padding-top: var(--esp-md);
+        padding-bottom: var(--esp-lg);
+    }
+
+    .marca__nombre {
+        font-size: 0.95rem;
+    }
+
+    .menu__enlace {
+        padding: 0.35rem 0.6rem;
+        font-size: 0.88rem;
+    }
+
+    .portada__titulo {
+        font-size: 1.75rem;
+    }
+
+    .portada__acciones .boton {
+        width: 100%;
+        text-align: center;
+    }
+
+    .seccion {
+        padding: var(--esp-sm);
+    }
+
+    .meta__plazo {
+        flex: 0 0 auto;
+    }
+}
+
+/* Pantallas grandes */
+@media (min-width: 1200px) {
+    .contenedor {
+        max-width: 1100px;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   21. Respeto por la preferencia de menos movimiento
+   -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    * {
+        transition: none !important;
+    }
+
+    .tarjeta:hover {
+        transform: none;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   22. Estilos de impresión
+   -------------------------------------------------------------------------- */
+
+@media print {
+    body {
+        background-color: #ffffff;
+        color: #000000;
+    }
+
+    .cabecera,
+    .pie,
+    .portada__acciones {
+        display: none;
+    }
+
+    .seccion,
+    .portada {
+        box-shadow: none;
+        border: 1px solid #cccccc;
+        break-inside: avoid;
+    }
+}
