@@ -1,58 +1,170 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Mi Perfil — Sitio personal en Laravel
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Aplicación web desarrollada con **Laravel 13** como parte del *Taller Básico – Introducción a Laravel* de la asignatura **Desarrollo Backend** de la Universidad Autónoma de Bucaramanga (UNAB).
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Descripción
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+`mi-perfil` es un sitio web personal de cinco páginas navegables que presenta información sobre mí: quién soy, mis intereses, mis habilidades técnicas y mis metas profesionales.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+El proyecto se construyó desde cero aplicando los conceptos base de Laravel: definición de rutas en `routes/web.php`, vistas con el motor de plantillas **Blade** y herencia de plantillas mediante un layout común. Todo el diseño visual se realizó con **CSS propio escrito a mano**, sin Bootstrap ni ningún otro framework de estilos.
 
-## Learning Laravel
+### Páginas del sitio
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+| Ruta | Vista | Contenido |
+|---|---|---|
+| `/` | `welcome.blade.php` | Portada de presentación y accesos a las demás secciones |
+| `/perfil` | `perfil.blade.php` | Información personal, experiencia y formación académica |
+| `/perfil/intereses` | `intereses.blade.php` | Pasatiempos y gustos personales |
+| `/perfil/habilidades` | `habilidades.blade.php` | Habilidades técnicas y blandas |
+| `/perfil/metas` | `metas.blade.php` | Objetivos profesionales a corto, mediano y largo plazo |
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Características
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+- Menú de navegación funcional entre todas las páginas, con indicador de la sección activa.
+- Paleta de colores personalizada definida con variables CSS.
+- Espaciado y márgenes consistentes mediante una escala de 8 píxeles.
+- Tipografía legible basada en fuentes del sistema.
+- Diseño responsive para escritorio, tableta y teléfono.
+- Detalles de accesibilidad: foco visible al navegar con teclado, enlace para saltar al contenido y soporte de `prefers-reduced-motion`.
 
-## Agentic Development
+---
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+## Requisitos del sistema
+
+| Herramienta | Versión mínima | Notas |
+|---|---|---|
+| PHP | 8.3 o superior | Con las extensiones habituales de Laravel (`mbstring`, `openssl`, `pdo`, `pdo_sqlite`, `tokenizer`, `xml`, `ctype`, `json`, `fileinfo`) |
+| Composer | 2.x | Gestor de dependencias de PHP |
+| Git | 2.x | Control de versiones |
+| Navegador web | Cualquiera actualizado | Chrome, Firefox, Edge o Safari |
+
+> Alternativamente se puede usar **XAMPP** o **Laragon**, que ya incluyen PHP y las extensiones necesarias.
+
+Este proyecto fue desarrollado y probado con **PHP 8.5**, **Composer 2.10** y **Laravel 13.25**.
+
+---
+
+## Instrucciones de instalación
+
+**1. Clonar el repositorio**
 
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+git clone https://github.com/santiagoRuiz1314/mi-perfil.git
+cd mi-perfil
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+**2. Instalar las dependencias de PHP**
 
-## Contributing
+```bash
+composer install
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+**3. Crear el archivo de configuración de entorno**
 
-## Code of Conduct
+```bash
+cp .env.example .env
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+En Windows (CMD), usar `copy .env.example .env`.
 
-## Security Vulnerabilities
+**4. Generar la clave de la aplicación**
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+php artisan key:generate
+```
 
-## License
+**5. Preparar la base de datos**
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+El proyecto usa **SQLite** y almacena las sesiones y la caché en base de datos, por lo que este paso es necesario aunque el sitio no guarde información propia.
+
+```bash
+php artisan migrate
+```
+
+Si el comando pregunta por crear el archivo `database/database.sqlite`, responder que sí.
+
+---
+
+## Cómo ejecutar el proyecto
+
+```bash
+php artisan serve
+```
+
+Luego abrir en el navegador:
+
+```
+http://localhost:8000
+```
+
+Desde la portada se puede navegar a las secciones **Perfil**, **Intereses**, **Habilidades** y **Metas** usando el menú superior.
+
+Para detener el servidor, presionar `Ctrl + C` en la terminal.
+
+---
+
+## Estructura del proyecto
+
+Archivos y carpetas relevantes para este taller:
+
+```
+mi-perfil/
+├── public/
+│   └── css/
+│       └── estilos.css              # Hoja de estilos propia (sin frameworks)
+├── resources/
+│   └── views/
+│       ├── layouts/
+│       │   └── app.blade.php        # Layout base con cabecera, menú y pie
+│       ├── welcome.blade.php        # Portada
+│       ├── perfil.blade.php         # Información personal
+│       ├── intereses.blade.php      # Pasatiempos y gustos
+│       ├── habilidades.blade.php    # Habilidades técnicas
+│       └── metas.blade.php          # Objetivos profesionales
+├── routes/
+│   └── web.php                      # Definición de las cinco rutas
+└── README.md
+```
+
+### Sobre el layout de Blade
+
+Las cuatro vistas de contenido y la portada extienden `layouts/app.blade.php` mediante `@extends`. Ese layout contiene el enlace a la hoja de estilos:
+
+```blade
+<link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
+```
+
+De esta forma la cabecera, el menú de navegación y el pie de página se escriben una sola vez y se reutilizan en todas las páginas, evitando duplicar código.
+
+---
+
+## Tecnologías utilizadas
+
+- **Laravel 13** — framework PHP
+- **Blade** — motor de plantillas
+- **PHP 8.5** — lenguaje del backend
+- **CSS3** — estilos propios, sin frameworks
+- **SQLite** — almacenamiento de sesiones y caché
+- **Git y GitHub** — control de versiones
+
+---
+
+## Autor
+
+**Santiago Ruiz**
+Estudiante de Ingeniería de Sistemas — Universidad Autónoma de Bucaramanga (UNAB)
+Bucaramanga, Colombia
+
+- Portafolio: <https://mi-portafolio-khaki-nine.vercel.app>
+- GitHub: <https://github.com/santiagoRuiz1314>
+
+---
+
+## Información académica
+
+- **Asignatura:** Desarrollo Backend
+- **Docente:** Fabián Enrique Suárez Carvajal
+- **Facultad:** Ingeniería — UNAB
+- **Fecha de entrega:** 13 de agosto de 2026
