@@ -1,0 +1,629 @@
+/* ==========================================================================
+   Mi Perfil — Hoja de estilos propia
+   Santiago Ruiz · Taller de Introducción a Laravel · UNAB
+   CSS escrito desde cero, sin Bootstrap ni ningún framework de estilos.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Paleta de colores y variables
+   -------------------------------------------------------------------------- */
+
+:root {
+    /* Colores principales */
+    --azul-profundo: #12263f;
+    --azul-medio: #1d4e89;
+    --azul-claro: #e8f0fa;
+    --acento: #ff6b35;
+    --acento-oscuro: #e2551f;
+
+    /* Superficies y texto */
+    --fondo: #f4f6f8;
+    --superficie: #ffffff;
+    --texto: #1a2330;
+    --texto-suave: #5b6b7c;
+    --borde: #dde4ec;
+
+    /* Tipografía */
+    --fuente-base: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+
+    /* Espaciado consistente (escala de 8px) */
+    --esp-xs: 0.5rem;
+    --esp-sm: 1rem;
+    --esp-md: 1.5rem;
+    --esp-lg: 2.5rem;
+    --esp-xl: 4rem;
+
+    /* Bordes y sombras */
+    --radio: 10px;
+    --sombra: 0 2px 8px rgba(18, 38, 63, 0.08);
+    --sombra-fuerte: 0 6px 20px rgba(18, 38, 63, 0.14);
+}
+
+/* --------------------------------------------------------------------------
+   2. Reinicio básico
+   -------------------------------------------------------------------------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--fuente-base);
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--texto);
+    background-color: var(--fondo);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+a {
+    color: var(--azul-medio);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--acento);
+    text-decoration: underline;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+/* --------------------------------------------------------------------------
+   3. Contenedor general
+   -------------------------------------------------------------------------- */
+
+.contenedor {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding-left: var(--esp-md);
+    padding-right: var(--esp-md);
+}
+
+.principal {
+    flex: 1;
+    padding-top: var(--esp-lg);
+    padding-bottom: var(--esp-xl);
+}
+
+/* --------------------------------------------------------------------------
+   4. Cabecera y menú de navegación
+   -------------------------------------------------------------------------- */
+
+.cabecera {
+    background-color: var(--azul-profundo);
+    box-shadow: var(--sombra);
+}
+
+.cabecera__interior {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--esp-sm);
+    padding-top: var(--esp-sm);
+    padding-bottom: var(--esp-sm);
+}
+
+.marca {
+    display: flex;
+    align-items: center;
+    gap: var(--esp-xs);
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+}
+
+.marca:hover {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.marca__inicial {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background-color: var(--acento);
+    color: #ffffff;
+    font-size: 0.9rem;
+}
+
+.marca__nombre {
+    font-size: 1.05rem;
+}
+
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--esp-xs);
+}
+
+.menu__enlace {
+    display: inline-block;
+    padding: 0.4rem 0.85rem;
+    border-radius: var(--radio);
+    color: #c8d6e5;
+    font-size: 0.95rem;
+}
+
+.menu__enlace:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.menu__enlace--activo {
+    background-color: var(--acento);
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.menu__enlace--activo:hover {
+    background-color: var(--acento-oscuro);
+    color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   5. Portada (página de inicio)
+   -------------------------------------------------------------------------- */
+
+.portada {
+    background-color: var(--superficie);
+    border-radius: var(--radio);
+    border-top: 4px solid var(--acento);
+    box-shadow: var(--sombra);
+    padding: var(--esp-lg);
+    margin-bottom: var(--esp-lg);
+}
+
+.portada__saludo {
+    color: var(--texto-suave);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+}
+
+.portada__titulo {
+    font-size: 2.6rem;
+    line-height: 1.2;
+    color: var(--azul-profundo);
+    margin-bottom: var(--esp-xs);
+}
+
+.portada__rol {
+    color: var(--azul-medio);
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: var(--esp-sm);
+}
+
+.portada__texto {
+    max-width: 62ch;
+    color: var(--texto-suave);
+    margin-bottom: var(--esp-md);
+}
+
+.portada__acciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--esp-xs);
+}
+
+/* --------------------------------------------------------------------------
+   6. Botones
+   -------------------------------------------------------------------------- */
+
+.boton {
+    display: inline-block;
+    padding: 0.65rem 1.4rem;
+    border-radius: var(--radio);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.boton:hover {
+    text-decoration: none;
+}
+
+.boton--principal {
+    background-color: var(--acento);
+    color: #ffffff;
+}
+
+.boton--principal:hover {
+    background-color: var(--acento-oscuro);
+    color: #ffffff;
+}
+
+.boton--secundario {
+    background-color: transparent;
+    border: 2px solid var(--azul-medio);
+    color: var(--azul-medio);
+}
+
+.boton--secundario:hover {
+    background-color: var(--azul-medio);
+    color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   7. Encabezado de página y secciones
+   -------------------------------------------------------------------------- */
+
+.encabezado {
+    border-left: 4px solid var(--acento);
+    padding-left: var(--esp-sm);
+    margin-bottom: var(--esp-lg);
+}
+
+.encabezado__titulo {
+    font-size: 2.1rem;
+    color: var(--azul-profundo);
+    line-height: 1.2;
+}
+
+.encabezado__subtitulo {
+    color: var(--texto-suave);
+}
+
+.seccion {
+    background-color: var(--superficie);
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    box-shadow: var(--sombra);
+    padding: var(--esp-md);
+    margin-bottom: var(--esp-md);
+}
+
+.seccion__titulo {
+    font-size: 1.3rem;
+    color: var(--azul-profundo);
+    padding-bottom: var(--esp-xs);
+    margin-bottom: var(--esp-sm);
+    border-bottom: 2px solid var(--azul-claro);
+}
+
+.parrafo {
+    max-width: 70ch;
+    margin-bottom: var(--esp-sm);
+}
+
+.parrafo:last-child {
+    margin-bottom: 0;
+}
+
+.parrafo--nota {
+    color: var(--texto-suave);
+    font-size: 0.95rem;
+}
+
+/* --------------------------------------------------------------------------
+   8. Listas con viñeta propia
+   -------------------------------------------------------------------------- */
+
+.lista li {
+    position: relative;
+    padding-left: var(--esp-md);
+    margin-bottom: var(--esp-xs);
+}
+
+.lista li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.7em;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: var(--acento);
+}
+
+/* --------------------------------------------------------------------------
+   9. Tarjetas
+   -------------------------------------------------------------------------- */
+
+.tarjetas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--esp-sm);
+}
+
+.tarjeta {
+    display: block;
+    background-color: var(--superficie);
+    border: 1px solid var(--borde);
+    border-radius: var(--radio);
+    border-top: 3px solid var(--azul-medio);
+    padding: var(--esp-md);
+    color: var(--texto);
+}
+
+.tarjeta:hover {
+    color: var(--texto);
+    text-decoration: none;
+    box-shadow: var(--sombra-fuerte);
+    border-top-color: var(--acento);
+}
+
+.tarjeta--estatica:hover {
+    box-shadow: none;
+    border-top-color: var(--azul-medio);
+}
+
+.tarjeta__titulo {
+    font-size: 1.1rem;
+    color: var(--azul-profundo);
+    margin-bottom: var(--esp-xs);
+}
+
+.tarjeta__texto {
+    color: var(--texto-suave);
+    font-size: 0.95rem;
+}
+
+.tarjeta__enlace {
+    display: inline-block;
+    margin-top: var(--esp-xs);
+    color: var(--acento);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* --------------------------------------------------------------------------
+   10. Ficha de datos (perfil)
+   -------------------------------------------------------------------------- */
+
+.ficha__fila {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--esp-xs);
+    padding: var(--esp-xs) 0;
+    border-bottom: 1px solid var(--borde);
+}
+
+.ficha__fila:last-child {
+    border-bottom: none;
+}
+
+.ficha__clave {
+    flex: 0 0 150px;
+    font-weight: 600;
+    color: var(--azul-profundo);
+}
+
+.ficha__valor {
+    flex: 1;
+    min-width: 200px;
+    color: var(--texto-suave);
+}
+
+/* --------------------------------------------------------------------------
+   11. Línea de tiempo (experiencia y formación)
+   -------------------------------------------------------------------------- */
+
+.linea-tiempo {
+    border-left: 2px solid var(--azul-claro);
+    padding-left: var(--esp-md);
+}
+
+.linea-tiempo__item {
+    position: relative;
+    margin-bottom: var(--esp-md);
+}
+
+.linea-tiempo__item:last-child {
+    margin-bottom: 0;
+}
+
+.linea-tiempo__item::before {
+    content: "";
+    position: absolute;
+    left: calc(-1 * var(--esp-md) - 7px);
+    top: 0.65rem;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--acento);
+    border: 2px solid var(--superficie);
+}
+
+.linea-tiempo__fecha {
+    display: inline-block;
+    background-color: var(--azul-claro);
+    color: var(--azul-medio);
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.15rem 0.6rem;
+    border-radius: var(--radio);
+}
+
+.linea-tiempo__cargo {
+    font-size: 1.1rem;
+    color: var(--azul-profundo);
+    margin-top: var(--esp-xs);
+}
+
+.linea-tiempo__lugar {
+    color: var(--texto-suave);
+    font-size: 0.95rem;
+    margin-bottom: var(--esp-xs);
+}
+
+.linea-tiempo__stack {
+    margin-top: var(--esp-xs);
+    font-size: 0.85rem;
+    color: var(--azul-medio);
+    font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   12. Etiquetas
+   -------------------------------------------------------------------------- */
+
+.etiquetas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--esp-xs);
+}
+
+.etiqueta {
+    background-color: var(--azul-claro);
+    color: var(--azul-medio);
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.3rem 0.8rem;
+    border-radius: var(--radio);
+    border: 1px solid transparent;
+}
+
+/* --------------------------------------------------------------------------
+   13. Grupos de habilidades
+   -------------------------------------------------------------------------- */
+
+.grupos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--esp-md);
+}
+
+.grupo__titulo {
+    font-size: 1rem;
+    color: var(--azul-profundo);
+    margin-bottom: var(--esp-xs);
+}
+
+/* --------------------------------------------------------------------------
+   14. Barras de nivel
+   -------------------------------------------------------------------------- */
+
+.barra {
+    margin-bottom: var(--esp-sm);
+}
+
+.barra:last-child {
+    margin-bottom: 0;
+}
+
+.barra__cabecera {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--esp-xs);
+    margin-bottom: 0.35rem;
+    font-size: 0.9rem;
+}
+
+.barra__nombre {
+    font-weight: 600;
+    color: var(--azul-profundo);
+}
+
+.barra__nivel {
+    color: var(--texto-suave);
+}
+
+.barra__pista {
+    display: block;
+    height: 9px;
+    background-color: var(--azul-claro);
+    border-radius: var(--radio);
+    overflow: hidden;
+}
+
+.barra__relleno {
+    display: block;
+    height: 100%;
+    border-radius: var(--radio);
+    background-color: var(--azul-medio);
+}
+
+/* --------------------------------------------------------------------------
+   15. Bloque destacado (cita)
+   -------------------------------------------------------------------------- */
+
+.destacado {
+    background-color: var(--azul-claro);
+    border-left: 4px solid var(--acento);
+    border-radius: var(--radio);
+    padding: var(--esp-md);
+}
+
+.destacado__texto {
+    color: var(--azul-profundo);
+    max-width: 70ch;
+}
+
+/* --------------------------------------------------------------------------
+   16. Metas
+   -------------------------------------------------------------------------- */
+
+.meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--esp-sm);
+    padding: var(--esp-sm) 0;
+    border-bottom: 1px solid var(--borde);
+}
+
+.meta:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.meta__plazo {
+    flex: 0 0 80px;
+    align-self: flex-start;
+    background-color: var(--azul-profundo);
+    color: #ffffff;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-align: center;
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--radio);
+}
+
+.meta__cuerpo {
+    flex: 1;
+    min-width: 220px;
+}
+
+.meta__titulo {
+    font-size: 1.05rem;
+    color: var(--azul-profundo);
+}
+
+.meta__texto {
+    color: var(--texto-suave);
+    font-size: 0.95rem;
+    max-width: 70ch;
+}
+
+/* --------------------------------------------------------------------------
+   17. Pie de página
+   -------------------------------------------------------------------------- */
+
+.pie {
+    background-color: var(--azul-profundo);
+    color: #c8d6e5;
+    font-size: 0.9rem;
+}
+
+.pie__interior {
+    padding-top: var(--esp-md);
+    padding-bottom: var(--esp-md);
+    text-align: center;
+}
+
+.pie__nota {
+    color: #8fa5bd;
+    font-size: 0.82rem;
+}
